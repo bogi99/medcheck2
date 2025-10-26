@@ -54,8 +54,8 @@
         @endif
 
         <!-- Edit Pill Modal -->
-        <div id="editModal" class="fixed inset-0 bg-black bg-opacity-10 flex items-center justify-center z-50 hidden">
-            <div class="bg-white dark:bg-gray-800 p-6 rounded shadow w-full max-w-md">
+        <div id="editModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+            <div class="bg-gray-800 dark:bg-gray-900 p-6 rounded border-2 border-blue-400 w-full max-w-md text-white">
                 <h3 class="text-lg font-semibold mb-4">Edit Pill</h3>
                 <form id="editForm" method="POST">
                     @csrf
@@ -77,9 +77,9 @@
                             <option value="evening">Evening</option>
                         </select>
                     </div>
-                    <button type="submit" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Save
+                    <button type="submit" class="px-4 py-2 bg-yellow-700 text-white rounded hover:bg-yellow-600">Save
                         Changes</button>
-                    <button type="button" class="px-4 py-2 bg-gray-400 text-white rounded ml-2"
+                    <button type="button" class="px-4 py-2 bg-gray-600 text-white rounded ml-2"
                         onclick="closeEditForm()">Cancel</button>
                 </form>
             </div>
