@@ -54,7 +54,7 @@
         @endif
 
         <!-- Edit Pill Modal -->
-        <div id="editModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div id="editModal" class="fixed inset-0  items-center justify-center z-50 hidden">
             <div class="bg-gray-800 dark:bg-gray-900 p-6 rounded border-2 border-blue-400 w-full max-w-md text-white">
                 <h3 class="text-lg font-semibold mb-4">Edit Pill</h3>
                 <form id="editForm" method="POST">
