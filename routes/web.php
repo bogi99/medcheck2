@@ -1,19 +1,14 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MedcheckController;
 
-Route::get('/', function () {
-    return view('custom');
-});
+Route::get('/', [MedcheckController::class, 'index'])->name('schedule');
+Route::post('/take/{id}', [MedcheckController::class, 'take'])->name('take');
+Route::post('/reset', [MedcheckController::class, 'reset'])->name('reset');
 
-Route::get('/custom', function () {
-    return view('custom');
-});
-
-Route::get('/schedule', function () {
-    return view('schedule'); // Create schedule.blade.php if needed
-})->name('schedule');
-
-Route::get('/setup', function () {
-    return view('setup'); // Create setup.blade.php if needed
-})->name('setup');
+Route::get('/setup', [MedcheckController::class, 'setup'])->name('setup');
+Route::post('/add-pill', [MedcheckController::class, 'addPill'])->name('addPill');
+Route::post('/delete-pill/{id}', [MedcheckController::class, 'deletePill'])->name('deletePill');
+Route::post('/edit-pill/{id}', [MedcheckController::class, 'editPill'])->name('editPill');
