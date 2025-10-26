@@ -142,4 +142,59 @@ class MedcheckController extends Controller
         session(['medcheck' => $medcheck]);
         return redirect()->route('setup');
     }
+
+    /**
+     * Show the export/import page.
+     */
+    public function exportPage(Request $request)
+    {
+        return view('export');
+    }
+
+    /**
+     * Export session data as JSON.
+     */
+    public function exportData(Request $request)
+    {
+        $medcheck = session('medcheck', [
+            'schedule' => [],
+            'status' => [],
+        ]);
+        $json = json_encode($medcheck, JSON_PRETTY_PRINT);
+        return response($json)
+            ->header('Content-Type', 'application/json')
+            ->header('Content-Disposition', 'attachment; filename=medcheck-export.json');
+    }
+
+    /**
+     * Import session data from JSON.
+     */
+    public function importData(Request $request)
+    {
+        $request->validate([
+            'import_json' => 'required|string',
+        ]);
+        $data = json_decode($request->input('import_json'), true);
+        if (!is_array($data) || !isset($data['schedule']) || !is_array($data['schedule'])) {
+            return back()->withErrors(['import_json' => 'Invalid data format.']);
+        }
+        // Optionally validate pills
+        foreach ($data['schedule'] as $pill) {
+            if (
+                !isset($pill['name'], $pill['qty'], $pill['time']) ||
+                !is_string($pill['name']) || strlen($pill['name']) > 255 ||
+                !is_numeric($pill['qty']) || $pill['qty'] < 1 ||
+                !in_array($pill['time'], ['morning', 'afternoon', 'evening'])
+            ) {
+                return back()->withErrors(['import_json' => 'Invalid pill data.']);
+            }
+        }
+        // Status is optional
+        $status = isset($data['status']) && is_array($data['status']) ? $data['status'] : [];
+        session(['medcheck' => [
+            'schedule' => $data['schedule'],
+            'status' => $status,
+        ]]);
+        return redirect()->route('setup')->with('success', 'Data imported successfully.');
+    }
 }

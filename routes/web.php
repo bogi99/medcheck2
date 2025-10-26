@@ -12,3 +12,7 @@ Route::get('/setup', [MedcheckController::class, 'setup'])->name('setup');
 Route::post('/add-pill', [MedcheckController::class, 'addPill'])->name('addPill');
 Route::post('/delete-pill/{id}', [MedcheckController::class, 'deletePill'])->name('deletePill');
 Route::post('/edit-pill/{id}', [MedcheckController::class, 'editPill'])->name('editPill');
+
+Route::get('/export', [MedcheckController::class, 'exportPage'])->name('export');
+Route::post('/export', [MedcheckController::class, 'exportData'])->name('exportData');
+Route::post('/import', [MedcheckController::class, 'importData'])->name('importData');
