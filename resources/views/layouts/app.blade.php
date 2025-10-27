@@ -23,9 +23,9 @@
 
     <!-- Menu Bar -->
     <nav class="bg-gray-100 dark:bg-gray-700 flex gap-8 px-6 py-3">
-        <a href="{{ route('schedule') }}" class="font-medium hover:text-blue-600">Schedule</a>
-        <a href="{{ route('setup') }}" class="font-medium hover:text-blue-600">Setup</a>
-        <a href="{{ route('export') }}" class="font-medium hover:text-blue-600">Export/Import</a>
+        <a href="{{ route('schedule') }}" class="font-medium hover:text-blue-600 {{ Route::currentRouteName() === 'schedule' ? 'text-blue-600 underline' : '' }}">Schedule</a>
+        <a href="{{ route('setup') }}" class="font-medium hover:text-blue-600 {{ Route::currentRouteName() === 'setup' ? 'text-blue-600 underline' : '' }}">Setup</a>
+        <a href="{{ route('export') }}" class="font-medium hover:text-blue-600 {{ Route::currentRouteName() === 'export' ? 'text-blue-600 underline' : '' }}">Export/Import</a>
     </nav>
 
     <!-- Content Section -->
