@@ -18,7 +18,7 @@
         <a href="{{ url('/') }}">
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10 w-10 mr-4">
         </a>
-        <h1 class="text-2xl font-bold">{{ config('app.name') }}</h1>
+        <h1 class="text-2xl font-bold">{{ config('app.name') }} - {{ config('app.version') }}</h1>
     </header>
 
     <!-- Menu Bar -->
@@ -36,6 +36,8 @@
     <!-- Footer -->
     <footer class="bg-white dark:bg-gray-800 text-center py-4 mt-auto shadow">
         <span class="text-sm">&copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</span>
+        <div class="text-xs text-gray-500 mt-2">This site uses only essential cookies for session management. No
+            tracking or analytics cookies are used.</div>
     </footer>
 </body>
 
