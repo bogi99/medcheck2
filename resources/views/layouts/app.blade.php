@@ -23,9 +23,12 @@
 
     <!-- Menu Bar -->
     <nav class="bg-gray-100 dark:bg-gray-700 flex gap-8 px-6 py-3">
-        <a href="{{ route('schedule') }}" class="font-medium hover:text-blue-600 {{ Route::currentRouteName() === 'schedule' ? 'text-blue-600 underline' : '' }}">Schedule</a>
-        <a href="{{ route('setup') }}" class="font-medium hover:text-blue-600 {{ Route::currentRouteName() === 'setup' ? 'text-blue-600 underline' : '' }}">Setup</a>
-        <a href="{{ route('export') }}" class="font-medium hover:text-blue-600 {{ Route::currentRouteName() === 'export' ? 'text-blue-600 underline' : '' }}">Export/Import</a>
+        <a href="{{ route('schedule') }}"
+            class="font-medium hover:text-blue-600 {{ Route::currentRouteName() === 'schedule' ? 'text-blue-600 underline' : '' }}">Schedule</a>
+        <a href="{{ route('setup') }}"
+            class="font-medium hover:text-blue-600 {{ Route::currentRouteName() === 'setup' ? 'text-blue-600 underline' : '' }}">Setup</a>
+        <a href="{{ route('export') }}"
+            class="font-medium hover:text-blue-600 {{ Route::currentRouteName() === 'export' ? 'text-blue-600 underline' : '' }}">Export/Import</a>
     </nav>
 
     <!-- Content Section -->
@@ -38,6 +41,9 @@
         <span class="text-sm">&copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</span>
         <div class="text-xs text-gray-500 mt-2">This site uses only essential cookies for session management. No
             tracking or analytics cookies are used.</div>
+        <div class="text-xs text-gray-600 dark:text-gray-400 mt-2">
+            Active sessions: {{ \DB::table('sessions')->distinct('ip_address')->count('ip_address') }}
+        </div>
     </footer>
 </body>
 
