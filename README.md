@@ -1,7 +1,7 @@
-# Medcheck2
+# Medicinereminder2
 
 ## Overview
-Medcheck2 is a simple, privacy-focused medication schedule tracker built with [Laravel](https://laravel.com). It helps users remember to take their pills, track daily progress, and manage their medication setup—all without requiring any personal information or user accounts.
+Medicinereminder2 is a simple, privacy-focused medication schedule tracker built with [Laravel](https://laravel.com). It helps users remember to take their pills, track daily progress, and manage their medication setup—all without requiring any personal information or user accounts.
 
 ## Features
 - Add, edit, and delete pills with quantity and time of day (morning, afternoon, evening)
@@ -12,7 +12,7 @@ Medcheck2 is a simple, privacy-focused medication schedule tracker built with [L
 - Responsive, modern UI with Tailwind CSS
 
 ## Privacy & Anonymity
-Medcheck2 is designed to be extremely anonymous:
+Medicinereminder2 is designed to be extremely anonymous:
 - No user registration or login required
 - All data is stored in your browser session only
 - No tracking cookies, analytics, or third-party scripts
