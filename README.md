@@ -8,7 +8,7 @@ Medicinereminder2 is a simple, privacy-focused medication schedule tracker built
 - Mark pills as taken for the day
 - Reset daily progress
 - Export and import your setup and progress as JSON for easy sharing or backup
-- No tracking, analytics, or personal data collection—fully anonymous
+- No tracking, analytics, or personal data collection - fully anonymous
 - Responsive, modern UI with Tailwind CSS
 
 ## Privacy & Anonymity
@@ -30,6 +30,12 @@ Medicinereminder2 is designed to be extremely anonymous:
 3. Copy `.env.example` to `.env` and set up your environment
 4. Run migrations: `php artisan migrate`
 5. Start the server: `php artisan serve`
+
+
+## Special Thanks 
+
+- **[Povilas Korop](https://github.com/LaravelDaily)** from [Laravel Daily](https://laraveldaily.com/) - for the comprehensive security and code quality review that helped make this application more secure and privacy-focused.
+
 
 ## License
 
