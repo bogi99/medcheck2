@@ -46,7 +46,8 @@
                                     class="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600">Delete</button>
                             </form>
                             <button type="button" class="px-3 py-1 rounded bg-yellow-500 text-white hover:bg-yellow-600"
-                                onclick="showEditForm({{ $pill['id'] }}, '{{ addslashes($pill['name']) }}', {{ $pill['qty'] }}, '{{ $pill['time'] }}')">Edit</button>
+                                data-pill='@json($pill)'
+                                onclick="showEditForm(this.dataset.pill)">Edit</button>
                         </div>
                     </li>
                 @endforeach
@@ -86,12 +87,13 @@
         </div>
 
         <script>
-            function showEditForm(id, name, qty, time) {
+            function showEditForm(pillJson) {
+                const pill = JSON.parse(pillJson);
                 document.getElementById('editModal').style.display = 'flex';
-                document.getElementById('edit_name').value = name;
-                document.getElementById('edit_qty').value = qty;
-                document.getElementById('edit_time').value = time;
-                document.getElementById('editForm').action = "{{ url('/edit-pill') }}/" + id;
+                document.getElementById('edit_name').value = pill.name;
+                document.getElementById('edit_qty').value = pill.qty;
+                document.getElementById('edit_time').value = pill.time;
+                document.getElementById('editForm').action = "{{ url('/edit-pill') }}/" + pill.id;
             }
 
             function closeEditForm() {
