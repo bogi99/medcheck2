@@ -14,7 +14,7 @@ Medicinereminder2 is a simple, privacy-focused medication schedule tracker built
 ## Privacy & Anonymity
 Medicinereminder2 is designed to be extremely anonymous:
 - No user registration or login required
-- All data is stored in your browser session only
+- All data is stored in encrypted sessions. 
 - No tracking cookies, analytics, or third-party scripts
 - You control your data—export, import, or clear it at any time
 
