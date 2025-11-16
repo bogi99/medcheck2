@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }} - @yield('title')</title>
-    <!-- JetBrains Mono font -->
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS via Vite -->
+    <!-- Tailwind CSS via Vite (includes self-hosted fonts) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -42,7 +40,12 @@
         <div class="text-xs text-gray-500 mt-2">This site uses only essential cookies for session management. No
             tracking or analytics cookies are used.</div>
         <div class="text-xs text-gray-600 dark:text-gray-400 mt-2">
-            Active sessions: {{ \DB::table('sessions')->distinct('ip_address')->count('ip_address') }}
+            Active sessions:
+            {{ cache()->remember('footer.sessions', 300, function () {
+                return config('session.driver') === 'database'
+                    ? \DB::table('sessions')->count(\DB::raw('DISTINCT ip_address'))
+                    : 'N/A';
+            }) }}
         </div>
     </footer>
 </body>

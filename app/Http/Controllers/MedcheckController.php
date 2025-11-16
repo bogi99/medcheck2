@@ -91,6 +91,8 @@ class MedcheckController extends Controller
             'qty' => $qty,
             'time' => $time,
         ];
+        // Initialize status for new pill
+        $medcheck['status'][$id] = false;
         session(['medcheck' => $medcheck]);
         return redirect()->route('setup');
     }
@@ -139,6 +141,8 @@ class MedcheckController extends Controller
         $medcheck['schedule'] = array_filter($medcheck['schedule'], function ($pill) use ($id) {
             return $pill['id'] != $id;
         });
+        // Clean up orphaned status entry
+        unset($medcheck['status'][$id]);
         session(['medcheck' => $medcheck]);
         return redirect()->route('setup');
     }
@@ -161,9 +165,14 @@ class MedcheckController extends Controller
             'status' => [],
         ]);
         $json = json_encode($medcheck, JSON_PRETTY_PRINT);
+
+        // Generate timestamp for filename (YYYY-MM-DD_HHMMSS format for good sorting)
+        $timestamp = now()->format('Y-m-d_His');
+        $filename = "medcheck-export-{$timestamp}.json";
+
         return response($json)
             ->header('Content-Type', 'application/json')
-            ->header('Content-Disposition', 'attachment; filename=medcheck-export.json');
+            ->header('Content-Disposition', "attachment; filename={$filename}");
     }
 
     /**
